@@ -13,10 +13,11 @@ import in.eightbitlabs.androidboilerplate.data.local.PreferencesHelper;
 import in.eightbitlabs.androidboilerplate.data.remote.RibotsService;
 import in.eightbitlabs.androidboilerplate.injection.ApplicationContext;
 import in.eightbitlabs.androidboilerplate.injection.module.ApplicationModule;
+import in.eightbitlabs.androidboilerplate.injection.module.NetworkModule;
 import in.eightbitlabs.androidboilerplate.util.RxEventBus;
 
 @Singleton
-@Component(modules = ApplicationModule.class)
+@Component(modules = {ApplicationModule.class, NetworkModule.class})
 public interface ApplicationComponent {
 
     void inject(SyncService syncService);

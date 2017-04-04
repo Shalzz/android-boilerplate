@@ -24,4 +24,12 @@ public class PreferencesHelper {
         mPref.edit().clear().apply();
     }
 
+    public boolean isFirstBoot() {
+        return mPref.getBoolean("first_boot", true);
+    }
+
+    public void setFirstBoot() {
+        mPref.edit().putBoolean("first_boot", false).apply();
+    }
+
 }

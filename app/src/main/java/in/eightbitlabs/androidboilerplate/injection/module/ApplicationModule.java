@@ -31,11 +31,4 @@ public class ApplicationModule {
     Context provideContext() {
         return mApplication;
     }
-
-    @Provides
-    @Singleton
-    RibotsService provideRibotsService() {
-        return RibotsService.Creator.newRibotsService();
-    }
-
 }
