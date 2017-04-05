@@ -72,4 +72,29 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                 });
     }
 
+    public void syncRibots() {
+        checkViewAttached();
+        getMvpView().showLoading();
+        RxUtil.unsubscribe(mSubscription);
+        mSubscription = mDataManager.syncRibots()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<Ribot>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().dismissLoading();
+                        Timber.e(e, "There was an error loading the ribots.");
+                        getMvpView().showError();
+                    }
+
+                    @Override
+                    public void onNext(Ribot ribots) {
+                        getMvpView().dismissLoading();
+                    }
+                });
+    }
 }

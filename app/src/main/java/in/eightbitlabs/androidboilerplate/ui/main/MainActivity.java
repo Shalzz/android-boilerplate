@@ -3,6 +3,7 @@ package in.eightbitlabs.androidboilerplate.ui.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Inject RibotsAdapter mRibotsAdapter;
 
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.swipe_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
 
     /**
      * Return an Intent to start this Activity.
@@ -53,6 +55,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mMainPresenter.attachView(this);
         mMainPresenter.loadRibots();
 
+        mSwipeRefreshLayout.setOnRefreshListener(() -> mMainPresenter.syncRibots());
+
         if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
             startService(SyncService.getStartIntent(this));
         }
@@ -66,6 +70,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     /***** MVP View methods implementation *****/
+
+    @Override
+    public void showLoading() {
+        mSwipeRefreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void dismissLoading() {
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
 
     @Override
     public void showRibots(List<Ribot> ribots) {

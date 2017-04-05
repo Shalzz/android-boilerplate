@@ -7,6 +7,10 @@ import in.eightbitlabs.androidboilerplate.ui.base.MvpView;
 
 public interface MainMvpView extends MvpView {
 
+    void showLoading();
+
+    void dismissLoading();
+
     void showRibots(List<Ribot> ribots);
 
     void showRibotsEmpty();
