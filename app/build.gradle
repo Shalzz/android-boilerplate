@@ -13,7 +13,7 @@ android {
     buildToolsVersion '26.0.2'
 
     defaultConfig {
-        applicationId 'in.eightbitlabs.androidboilerplate'
+        applicationId 'com.shaleenjain.androidboilerplate'
         minSdkVersion 16
         targetSdkVersion 26
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
