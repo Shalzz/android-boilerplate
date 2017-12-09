@@ -1,5 +1,7 @@
 package in.eightbitlabs.androidboilerplate.ui.main;
 
+import org.reactivestreams.Subscriber;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -75,13 +77,19 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     public void syncRibots() {
         checkViewAttached();
         getMvpView().showLoading();
-        RxUtil.unsubscribe(mSubscription);
-        mSubscription = mDataManager.syncRibots()
+        RxUtil.dispose(mDisposable);
+        mDataManager.syncRibots()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<Ribot>() {
+                .subscribe(new Observer<Ribot>() {
                     @Override
-                    public void onCompleted() {
+                    public void onSubscribe(@NonNull Disposable d) {
+                        mDisposable = d;
+                    }
+
+                    @Override
+                    public void onNext(Ribot ribots) {
+                        getMvpView().dismissLoading();
                     }
 
                     @Override
@@ -92,8 +100,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                     }
 
                     @Override
-                    public void onNext(Ribot ribots) {
-                        getMvpView().dismissLoading();
+                    public void onComplete() {
                     }
                 });
     }

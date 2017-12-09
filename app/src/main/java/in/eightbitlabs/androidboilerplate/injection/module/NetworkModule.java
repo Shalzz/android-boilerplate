@@ -12,7 +12,7 @@ import in.eightbitlabs.androidboilerplate.data.model.MyGsonTypeAdapterFactory;
 import in.eightbitlabs.androidboilerplate.data.remote.RibotsService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -44,7 +44,7 @@ public class NetworkModule {
         return new Retrofit.Builder()
                 .baseUrl(RibotsService.ENDPOINT)
                 .client(client)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(RibotsService.class);
