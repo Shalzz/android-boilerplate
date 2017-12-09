@@ -1,4 +1,4 @@
-package in.eightbitlabs.androidboilerplate.util.runner;
+package in.eightbitlabs.androidboilerplate.runner;
 
 import android.os.Bundle;
 import android.support.test.espresso.Espresso;

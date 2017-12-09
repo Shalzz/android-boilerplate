@@ -1,4 +1,4 @@
-package in.eightbitlabs.androidboilerplate.util;
+package in.eightbitlabs.androidboilerplate;
 
 import org.junit.After;
 import org.junit.Before;
@@ -17,6 +17,7 @@ import in.eightbitlabs.androidboilerplate.data.DataManager;
 import in.eightbitlabs.androidboilerplate.data.model.Ribot;
 import in.eightbitlabs.androidboilerplate.ui.main.MainMvpView;
 import in.eightbitlabs.androidboilerplate.ui.main.MainPresenter;
+import in.eightbitlabs.androidboilerplate.util.RxSchedulersOverrideRule;
 import io.reactivex.Observable;
 
 import static org.mockito.Mockito.never;

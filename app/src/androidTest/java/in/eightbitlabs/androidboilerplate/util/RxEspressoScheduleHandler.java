@@ -1,4 +1,4 @@
-package uk.co.ribot.androidboilerplate.util;
+package in.eightbitlabs.androidboilerplate.util;
 
 import android.support.test.espresso.IdlingResource;
 import android.support.test.espresso.contrib.CountingIdlingResource;

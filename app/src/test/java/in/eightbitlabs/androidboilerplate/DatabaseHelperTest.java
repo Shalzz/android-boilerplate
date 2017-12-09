@@ -1,4 +1,4 @@
-package in.eightbitlabs.androidboilerplate.util;
+package in.eightbitlabs.androidboilerplate;
 
 import android.database.Cursor;
 
@@ -18,7 +18,6 @@ import in.eightbitlabs.androidboilerplate.data.local.DatabaseHelper;
 import in.eightbitlabs.androidboilerplate.data.local.Db;
 import in.eightbitlabs.androidboilerplate.data.local.DbOpenHelper;
 import in.eightbitlabs.androidboilerplate.data.model.Ribot;
-import in.eightbitlabs.androidboilerplate.test.common.TestDataFactory;
 import in.eightbitlabs.androidboilerplate.util.DefaultConfig;
 import in.eightbitlabs.androidboilerplate.util.RxSchedulersOverrideRule;
 

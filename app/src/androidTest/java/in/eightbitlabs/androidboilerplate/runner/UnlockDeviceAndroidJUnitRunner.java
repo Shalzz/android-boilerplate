@@ -1,4 +1,4 @@
-package in.eightbitlabs.androidboilerplate.util.runner;
+package in.eightbitlabs.androidboilerplate.runner;
 
 import android.app.Application;
 import android.app.KeyguardManager;

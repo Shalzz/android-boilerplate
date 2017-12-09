@@ -1,4 +1,4 @@
-package in.eightbitlabs.androidboilerplate.util;
+package in.eightbitlabs.androidboilerplate;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,14 +10,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Arrays;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.observers.TestObserver;
 import in.eightbitlabs.androidboilerplate.data.DataManager;
 import in.eightbitlabs.androidboilerplate.data.local.DatabaseHelper;
 import in.eightbitlabs.androidboilerplate.data.local.PreferencesHelper;
 import in.eightbitlabs.androidboilerplate.data.model.Ribot;
 import in.eightbitlabs.androidboilerplate.data.remote.RibotsService;
-import in.eightbitlabs.androidboilerplate.test.common.TestDataFactory;
+import io.reactivex.Observable;
+import io.reactivex.observers.TestObserver;
 
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
