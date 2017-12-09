@@ -132,6 +132,8 @@ dependencies {
     compileOnly "com.ryanharter.auto.value:auto-value-gson:$AUTO_VALUE_GSON_VERSION"
     annotationProcessor "com.ryanharter.auto.value:auto-value-gson:$AUTO_VALUE_GSON_VERSION"
 
+    annotationProcessor 'com.gabrielittner.auto.value:auto-value-with:1.0.0'
+
     annotationProcessor 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
     compileOnly 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.6'
     annotationProcessor 'com.squareup:javapoet:1.7.0'
