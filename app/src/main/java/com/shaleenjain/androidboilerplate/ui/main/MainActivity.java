@@ -24,7 +24,7 @@ import com.shaleenjain.androidboilerplate.util.DialogFactory;
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
-            "in.eightbitlabs.carpool.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
+            "com.shaleenjain.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mMainPresenter;
     @Inject RibotsAdapter mRibotsAdapter;

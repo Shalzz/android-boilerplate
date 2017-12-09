@@ -15,7 +15,6 @@ import java.util.List;
 
 import io.reactivex.observers.TestObserver;
 import com.shaleenjain.androidboilerplate.data.local.DatabaseHelper;
-import com.shaleenjain.androidboilerplate.data.local.Db;
 import com.shaleenjain.androidboilerplate.data.local.DbOpenHelper;
 import com.shaleenjain.androidboilerplate.data.model.Ribot;
 import com.shaleenjain.androidboilerplate.util.DefaultConfig;

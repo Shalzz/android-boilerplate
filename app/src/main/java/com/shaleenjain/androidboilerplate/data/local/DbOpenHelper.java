@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.shaleenjain.androidboilerplate.data.model.Profile;
 import com.shaleenjain.androidboilerplate.injection.ApplicationContext;
 
 @Singleton
@@ -31,7 +32,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.beginTransaction();
         try {
-            db.execSQL(Db.RibotProfileTable.CREATE);
+            db.execSQL(Profile.CREATE_TABLE);
             //Add other tables here
             db.setTransactionSuccessful();
         } finally {

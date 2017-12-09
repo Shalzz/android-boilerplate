@@ -1,0 +1,15 @@
+import com.shaleenjain.androidboilerplate.data.model.Name;
+import java.util.Date;
+
+CREATE TABLE ribot_profile (
+  email TEXT NOT NULL PRIMARY KEY,
+  name TEXT AS Name NOT NULL,
+  hexColor TEXT NOT NULL,
+  dateOfBirth INTEGER AS Date NOT NULL,
+  bio TEXT,
+  avatar TEXT
+);
+
+selectALL:
+SELECT *
+FROM ribot_profile;

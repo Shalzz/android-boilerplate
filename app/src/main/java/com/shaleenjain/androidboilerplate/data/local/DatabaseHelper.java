@@ -1,9 +1,10 @@
 package com.shaleenjain.androidboilerplate.data.local;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.VisibleForTesting;
 
+import com.shaleenjain.androidboilerplate.data.model.Profile;
+import com.shaleenjain.androidboilerplate.data.model.Ribot;
 import com.squareup.sqlbrite2.BriteDatabase;
 import com.squareup.sqlbrite2.SqlBrite;
 
@@ -17,10 +18,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Scheduler;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import com.shaleenjain.androidboilerplate.data.model.Ribot;
 
 @Singleton
 public class DatabaseHelper {
@@ -49,10 +47,10 @@ public class DatabaseHelper {
                 if (emitter.isDisposed()) return;
                 BriteDatabase.Transaction transaction = mDb.newTransaction();
                 try {
-                    mDb.delete(Db.RibotProfileTable.TABLE_NAME, null);
+                    mDb.delete(Profile.TABLE_NAME, null);
                     for (Ribot ribot : newRibots) {
-                        long result = mDb.insert(Db.RibotProfileTable.TABLE_NAME,
-                                Db.RibotProfileTable.toContentValues(ribot.profile()),
+                        long result = mDb.insert(Profile.TABLE_NAME,
+                                Profile.FACTORY.marshal(ribot.profile()).asContentValues(),
                                 SQLiteDatabase.CONFLICT_REPLACE);
                         if (result >= 0) emitter.onNext(ribot);
                     }
@@ -66,14 +64,9 @@ public class DatabaseHelper {
     }
 
     public Observable<List<Ribot>> getRibots() {
-        return mDb.createQuery(Db.RibotProfileTable.TABLE_NAME,
-                "SELECT * FROM " + Db.RibotProfileTable.TABLE_NAME)
-                .mapToList(new Function<Cursor, Ribot>() {
-                    @Override
-                    public Ribot apply(@NonNull Cursor cursor) throws Exception {
-                        return Ribot.create(Db.RibotProfileTable.parseCursor(cursor));
-                    }
-                });
+        return mDb.createQuery(Profile.FACTORY.selectALL().tables,
+                                Profile.FACTORY.selectALL().statement)
+                    .mapToList(cursor -> Ribot.create(Profile.SELECT_ALL_MAPPER.map(cursor)));
     }
 
 }
