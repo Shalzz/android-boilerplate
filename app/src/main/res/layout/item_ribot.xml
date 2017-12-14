@@ -24,6 +24,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:background="@android:color/holo_blue_dark"
+            tools:background="@tools:sample/avatars"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +37,7 @@
             android:textSize="@dimen/text_body"
             app:layout_constraintLeft_toRightOf="@id/view_hex_color"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Antony Ribot"/>
+            tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/text_email"
@@ -48,7 +49,7 @@
             android:textSize="@dimen/text_small_body"
             app:layout_constraintLeft_toRightOf="@id/view_hex_color"
             app:layout_constraintTop_toBottomOf="@id/text_name"
-            tools:text="developer" />
+            tools:text="@tools:sample/cities" />
 
     </android.support.constraint.ConstraintLayout>
 
